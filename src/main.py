@@ -34,16 +34,3 @@ def openFile():
 def saveFile() :
     return None
 
-def Vigenere(plaintext, key):
-    return None
-
-def ExtendedVigenere(plaintext, key):
-    return None
-
-def Playfair(plaintext, key):
-    return None
-
-def OTP(plaintext, key):
-    return None
-
-

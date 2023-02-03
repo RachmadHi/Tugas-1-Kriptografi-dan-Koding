@@ -15,7 +15,12 @@ def vigenere_cipher(text, key, operation):
     text = text.upper()
     key = key.upper()
     key_index = 0
-    key = key * (len(text)//len(key)) + key[:len(text) % len(key)]
+
+    if operation == "encrypt" :
+        key = key * (len(text)//len(key)) + key[:(len(text) % len(key))]
+    elif operation == "decrypt" :
+        key = key
+
     for char in text:
         char_index = ALPHABET.find(char)
         #if char_index == -1:
@@ -24,8 +29,9 @@ def vigenere_cipher(text, key, operation):
         if operation == 'encrypt':
             result += ALPHABET[(char_index + ALPHABET.find(key[key_index])) % 26]
         elif operation == 'decrypt':
-            result += ALPHABET[(char_index - ALPHABET.find(key[key_index])) % 26]
+            result += ALPHABET[(char_index - (ALPHABET.find(key[key_index]))) % 26]
         key_index += 1
+
     return result
         
 def encrypt_file(file_path):
@@ -47,25 +53,78 @@ def decrypt_file(file_path):
     with open(file_path, "w") as file:
         file.write(plaintext)
 
+def EnkripsiOTP(plaintext) :
+    operation='encrypt'
+    counter = wordCounter(plaintext)
+    otpkey= read_otpkey(counter)
+    encrypt = vigenere_cipher(plaintext,otpkey,operation)
+    
+    return encrypt
+
+def OTPkey(plaintext) :
+    counter = wordCounter(plaintext)
+    otpkey = read_otpkey(counter)
+    
+    return otpkey
+
+def DekripsiOTP(ciphertext, otpkey) :
+    operation = 'decrypt'
+    key = otpkey
+    decrypt = vigenere_cipher(ciphertext,key,operation)
+    return decrypt
+        
+def encrypt_file(file_path):
+    with open(file_path, "r") as file:
+        plaintext = file.read()
+        counter = wordCounter(plaintext)
+    otpkey = read_otpkey(counter)
+    print('Berikut adalah OTP Key yang digunakan: ' + otpkey )
+    ciphertext = vigenere_cipher(plaintext, otpkey,'encrypt')
+    with open(file_path, "w") as file:
+        file.write(ciphertext)
+
+def decrypt_file(file_path):
+    """Decrypts the contents of the file at file_path using the one-time pad cipher"""
+    key = input('Masukkan Key: ')
+    with open(file_path, "r") as file:
+        ciphertext = file.read()
+    plaintext = vigenere_cipher(ciphertext, key,'decrypt')
+    with open(file_path, "w") as file:
+        file.write(plaintext)
+
+
+
+>>>>>>> Stashed changes
 def read_otpkey(counter):
     otpkey=''
-    with open('otpkey.txt') as f:
-        
+    with open('src\otpkey.txt') as f:
         for i in range (0,counter):
             lines = f.read(1)
             otpkey = otpkey+lines
+
     deleteUsedKey(counter)
-    return otpkey
     f.close()
+    return otpkey
 
 def deleteUsedKey(counter):
-    with open("otpkey.txt", "r") as file:
+    with open("src\otpkey.txt", "r") as file:
         content = file.read()
 
     # Remove the first counter characters from the string
     content = content[counter:]
 
-    with open("otpkey.txt", "w") as file:
+    with open("src\otpkey.txt", "w") as file:
+        file.write(content)
+<<<<<<< HEAD
+=======
+
+def read_from_file(randomfile):
+    with open(randomfile, 'rb') as file:
+        content = file.read()
+        return content
+
+def write_binary(randomfile,content):
+    with open(randomfile, 'wb') as file:
         file.write(content)
 
 def read_from_file(randomfile):
@@ -79,4 +138,6 @@ def write_binary(randomfile,content):
 
 
 
+
 menu()
+>>>>>>> f1bb0a8a609236d1cdf0a535ae52f0f2c775aabd

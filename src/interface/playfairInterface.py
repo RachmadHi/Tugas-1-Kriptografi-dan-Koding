@@ -9,9 +9,37 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from algorithm.PlayfairCipher import *
 
 
 class Ui_Playfair(object):
+    
+    def enkripsiText(self): 
+        plaintext = self.TextInput.text()
+        key = self.KeyInput.text()
+        new_key = key_setting(key)
+        new_plaintext = plaintext_setting(plaintext)
+
+        ciphertext = EnkripsiPlayfair(new_plaintext, new_key)
+        self.textBrowser_2.setText(ciphertext)
+    
+    def enkripsiFile() :
+
+        return None
+    
+    def dekripsiText(self):
+        ciphertext= self.TextInput.text()
+        key = self.KeyInput.text()
+        new_key = key_setting(key)
+
+        plaintext = DekripsiPlayfair(ciphertext, new_key)
+        new_plaintext = ciphertext_setting(plaintext)
+        self.textBrowser_2.setText(new_plaintext)
+
+    def dekripsiFile():
+
+        return None
+    
     def openHomepage(self):
         from interface.hompageInterface import Ui_Homepage
         self.window = QtWidgets.QMainWindow()
@@ -45,6 +73,7 @@ class Ui_Playfair(object):
         "\n"
         "color: #FFFFFF;")
         self.DecryptPushButton.setObjectName("DecryptPushButton")
+        self.DecryptPushButton.clicked.connect(self.dekripsiText)
 
         self.Judul = QtWidgets.QLabel(self.centralwidget)
         self.Judul.setGeometry(QtCore.QRect(280, 30, 431, 71))
@@ -56,15 +85,15 @@ class Ui_Playfair(object):
         "color: #B67F57;")
         self.Judul.setObjectName("Judul")
 
-        self.encryptPushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.encryptPushButton.setGeometry(QtCore.QRect(100, 380, 191, 41))
+        self.EncryptPushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.EncryptPushButton.setGeometry(QtCore.QRect(100, 380, 191, 41))
         font = QtGui.QFont()
         font.setPointSize(1)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(87)
-        self.encryptPushButton.setFont(font)
-        self.encryptPushButton.setStyleSheet("background: #D19B47;\n"
+        self.EncryptPushButton.setFont(font)
+        self.EncryptPushButton.setStyleSheet("background: #D19B47;\n"
         "border-radius: 15px;\n"
         "\n"
         "font-style: normal;\n"
@@ -74,9 +103,10 @@ class Ui_Playfair(object):
         "text-align: center;\n"
         "letter-spacing: 0.2em;\n"
         "color: #FFFFFF;")
-        self.encryptPushButton.setObjectName("encryptPushButton")
+        self.EncryptPushButton.setObjectName("encryptPushButton")
+        self.EncryptPushButton.clicked.connect(self.enkripsiText)
 
-        self.TextInput = QtWidgets.QTextEdit(self.centralwidget)
+        self.TextInput = QtWidgets.QLineEdit(self.centralwidget)
         self.TextInput.setGeometry(QtCore.QRect(100, 160, 561, 41))
         self.TextInput.setStyleSheet("background-color : white;\n"
         "border-radius : 15px;")
@@ -99,12 +129,13 @@ class Ui_Playfair(object):
         font.setPointSize(14)
         self.keyLabel.setFont(font)
         self.keyLabel.setStyleSheet("text-align : center;\n"
-"color: #B67F57;")
+        "color: #B67F57;")
         self.keyLabel.setObjectName("keyLabel")
-        self.KeyInput = QtWidgets.QTextEdit(self.centralwidget)
+
+        self.KeyInput = QtWidgets.QLineEdit(self.centralwidget)
         self.KeyInput.setGeometry(QtCore.QRect(100, 250, 791, 41))
         self.KeyInput.setStyleSheet("background-color : white;\n"
-"border-radius : 15px;")
+        "border-radius : 15px;")
         self.KeyInput.setObjectName("KeyInput")
         self.ResultLabel = QtWidgets.QLabel(self.centralwidget)
         self.ResultLabel.setGeometry(QtCore.QRect(100, 420, 451, 71))
@@ -113,8 +144,9 @@ class Ui_Playfair(object):
         font.setPointSize(14)
         self.ResultLabel.setFont(font)
         self.ResultLabel.setStyleSheet("text-align : center;\n"
-"color: #B67F57;")
+        "color: #B67F57;")
         self.ResultLabel.setObjectName("ResultLabel")
+
         self.textInput_label_4 = QtWidgets.QLabel(self.centralwidget)
         self.textInput_label_4.setGeometry(QtCore.QRect(700, 90, 111, 71))
         font = QtGui.QFont()
@@ -122,8 +154,9 @@ class Ui_Playfair(object):
         font.setPointSize(14)
         self.textInput_label_4.setFont(font)
         self.textInput_label_4.setStyleSheet("text-align : center;\n"
-"color: #B67F57;")
+        "color: #B67F57;")
         self.textInput_label_4.setObjectName("textInput_label_4")
+
         self.SpacingLabel = QtWidgets.QLabel(self.centralwidget)
         self.SpacingLabel.setGeometry(QtCore.QRect(100, 280, 91, 71))
         font = QtGui.QFont()
@@ -131,8 +164,9 @@ class Ui_Playfair(object):
         font.setPointSize(14)
         self.SpacingLabel.setFont(font)
         self.SpacingLabel.setStyleSheet("text-align : center;\n"
-"color: #B67F57;")
+        "color: #B67F57;")
         self.SpacingLabel.setObjectName("SpacingLabel")
+
         self.NoSpacingRadioButton = QtWidgets.QRadioButton(self.centralwidget)
         self.NoSpacingRadioButton.setGeometry(QtCore.QRect(100, 340, 121, 17))
         font = QtGui.QFont()
@@ -141,7 +175,6 @@ class Ui_Playfair(object):
         font.setItalic(False)
         font.setWeight(87)
         self.NoSpacingRadioButton.setFont(font)
-
         self.NoSpacingRadioButton.setStyleSheet("font-style: normal;\n"
         "font-weight: 700;\n"
         "font-size: 14px;\n"
@@ -213,14 +246,14 @@ class Ui_Playfair(object):
         self.textBrowser_2 = QtWidgets.QTextBrowser(self.centralwidget)
         self.textBrowser_2.setGeometry(QtCore.QRect(100, 480, 791, 71))
         self.textBrowser_2.setStyleSheet("background : white;\n"
-"border-radius : 15px;")
+        "border-radius : 15px;")
         self.textBrowser_2.setObjectName("textBrowser_2")
         self.SpacingLabel.raise_()
         self.ResultLabel.raise_()
         self.keyLabel.raise_()
         self.DecryptPushButton.raise_()
         self.Judul.raise_()
-        self.encryptPushButton.raise_()
+        self.EncryptPushButton.raise_()
         self.textInput_label.raise_()
         self.TextInput.raise_()
         self.KeyInput.raise_()
@@ -243,19 +276,11 @@ class Ui_Playfair(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.DecryptPushButton.setText(_translate("MainWindow", "Decrypt"))
         self.Judul.setText(_translate("MainWindow", "Playfair Cipher"))
-        self.encryptPushButton.setText(_translate("MainWindow", "Encrypt"))
-        self.TextInput.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt;\"><br /></p></body></html>"))
+        self.EncryptPushButton.setText(_translate("MainWindow", "Encrypt"))
+        self.TextInput.setText(_translate("MainWindow", ""))
         self.textInput_label.setText(_translate("MainWindow", "Text input"))
         self.keyLabel.setText(_translate("MainWindow", "Key"))
-        self.KeyInput.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt;\"><br /></p></body></html>"))
+        self.KeyInput.setText(_translate("MainWindow", ""))
         self.ResultLabel.setText(_translate("MainWindow", "Result"))
         self.textInput_label_4.setText(_translate("MainWindow", "Input File"))
         self.SpacingLabel.setText(_translate("MainWindow", "Spacing"))
@@ -263,11 +288,7 @@ class Ui_Playfair(object):
         self.GroupBy5radioButton.setText(_translate("MainWindow", "Group by 5"))
         self.SaveFile.setText(_translate("MainWindow", "Save File"))
         self.Back.setText(_translate("MainWindow", "Back to Main Menu"))
-        self.textBrowser_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.textBrowser_2.setText(_translate("MainWindow", ""))
 
 if __name__ == "__main__":
     import sys

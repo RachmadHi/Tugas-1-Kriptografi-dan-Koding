@@ -9,9 +9,34 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from algorithm.VignereCipher import EnkripsiVigenere, DekripsiVigenere
 
 
 class Ui_Vigenere(object):
+    
+
+    def enkripsiText(self): 
+        plaintext = self.TextInput.text()
+        key = self.KeyInput.text()
+        ciphertext = EnkripsiVigenere(plaintext, key)
+        self.textBrowser_2.setText(ciphertext)
+    
+    def enkripsiFile() :
+
+        return None
+    
+    def dekripsiText(self):
+        ciphertext= self.TextInput.text()
+        key = self.KeyInput.text()
+        plaintext = DekripsiVigenere(ciphertext, key)
+        self.textBrowser_2.setText(plaintext)
+
+    def dekripsiFile():
+
+        return None
+    
+    
+
     def openHomepage(self):
         from interface.hompageInterface import Ui_Homepage
         self.window = QtWidgets.QMainWindow()
@@ -45,6 +70,7 @@ class Ui_Vigenere(object):
         "\n"
         "color: #FFFFFF;")
         self.DecryptPushButton.setObjectName("DecryptPushButton")
+        self.DecryptPushButton.clicked.connect(self.dekripsiText)
 
         self.Judul = QtWidgets.QLabel(self.centralwidget)
         self.Judul.setGeometry(QtCore.QRect(260, 30, 451, 71))
@@ -75,8 +101,9 @@ class Ui_Vigenere(object):
         "letter-spacing: 0.2em;\n"
         "color: #FFFFFF;")
         self.encryptPushButton.setObjectName("encryptPushButton")
+        self.encryptPushButton.clicked.connect(self.enkripsiText)
 
-        self.TextInput = QtWidgets.QTextEdit(self.centralwidget)
+        self.TextInput = QtWidgets.QLineEdit(self.centralwidget)
         self.TextInput.setGeometry(QtCore.QRect(100, 160, 561, 41))
         self.TextInput.setStyleSheet("background-color : white;\n"
         "border-radius : 15px;")
@@ -102,7 +129,7 @@ class Ui_Vigenere(object):
         "color: #B67F57;")
         self.keyLabel.setObjectName("keyLabel")
 
-        self.KeyInput = QtWidgets.QTextEdit(self.centralwidget)
+        self.KeyInput = QtWidgets.QLineEdit(self.centralwidget)
         self.KeyInput.setGeometry(QtCore.QRect(100, 250, 791, 41))
         self.KeyInput.setStyleSheet("background-color : white;\n"
         "border-radius : 15px;")
@@ -137,6 +164,7 @@ class Ui_Vigenere(object):
         self.SpacingLabel.setStyleSheet("text-align : center;\n"
         "color: #B67F57;")
         self.SpacingLabel.setObjectName("SpacingLabel")
+        
 
         self.NoSpacingRadioButton = QtWidgets.QRadioButton(self.centralwidget)
         self.NoSpacingRadioButton.setGeometry(QtCore.QRect(100, 340, 121, 17))
@@ -154,6 +182,7 @@ class Ui_Vigenere(object):
         "color: #B67F57;\n"
         "")
         self.NoSpacingRadioButton.setObjectName("NoSpacingRadioButton")
+        self.NoSpacingRadioButton.toggled.connect(lambda:self.btnstate(self.NoSpacingRadioButton))
 
         self.GroupBy5radioButton = QtWidgets.QRadioButton(self.centralwidget)
         self.GroupBy5radioButton.setGeometry(QtCore.QRect(260, 340, 121, 17))
@@ -171,6 +200,7 @@ class Ui_Vigenere(object):
         "color: #B67F57;\n"
         "")
         self.GroupBy5radioButton.setObjectName("GroupBy5radioButton")
+        self.GroupBy5radioButton.toggled.connect(lambda:self.btnstate(self.GroupBy5radioButton))
 
         self.SaveFile = QtWidgets.QPushButton(self.centralwidget)
         self.SaveFile.setGeometry(QtCore.QRect(100, 570, 191, 41))
@@ -248,18 +278,10 @@ class Ui_Vigenere(object):
         self.DecryptPushButton.setText(_translate("MainWindow", "Decrypt"))
         self.Judul.setText(_translate("MainWindow", "Vigenere Cipher"))
         self.encryptPushButton.setText(_translate("MainWindow", "Encrypt"))
-        self.TextInput.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt;\"><br /></p></body></html>"))
+        self.TextInput.setText(_translate("MainWindow", ""))
         self.textInput_label.setText(_translate("MainWindow", "Text input"))
         self.keyLabel.setText(_translate("MainWindow", "Key"))
-        self.KeyInput.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt;\"><br /></p></body></html>"))
+        self.KeyInput.setText(_translate("MainWindow", ""))
         self.ResultLabel.setText(_translate("MainWindow", "Result"))
         self.textInput_label_4.setText(_translate("MainWindow", "Input File"))
         self.SpacingLabel.setText(_translate("MainWindow", "Spacing"))
@@ -267,11 +289,7 @@ class Ui_Vigenere(object):
         self.GroupBy5radioButton.setText(_translate("MainWindow", "Group by 5"))
         self.SaveFile.setText(_translate("MainWindow", "Save File"))
         self.Back.setText(_translate("MainWindow", "Back to Main Menu"))
-        self.textBrowser_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.textBrowser_2.setText(_translate("MainWindow", ""))
 
 if __name__ == "__main__":
     import sys

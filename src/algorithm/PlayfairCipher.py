@@ -2,11 +2,9 @@ import string
 import math
 from numpy import *
 
-alphabet = list(string.ascii_uppercase)
-key = ""
-plaintext = ""
-
 def key_setting(key) :
+    alphabet = list(string.ascii_uppercase)
+    key = key.upper()
     new_key = ""
     for i in range (len(key)) :
         if (key[i] != "J") and (key[i] not in new_key) :
@@ -17,21 +15,19 @@ def key_setting(key) :
     for i in range (len(alphabet)) :
         if (alphabet[i] != "J") and (alphabet[i] not in new_key) :
             new_key = new_key + alphabet[i]
-
-    return new_key
-
-def newkey_matrix(key):
-    key_matrix = reshape(list(key),(5,5))
+    
+    key_matrix = reshape(list(new_key),(5,5))
     return key_matrix
 
 def plaintext_setting(plaintext) :
+    plaintext = plaintext.upper()
     new_plaintext = ""
     final_plaintext = ""
 
-    if "j" in plaintext :
+    if "J" in plaintext :
         for i in range (len(plaintext)) :
             if (plaintext[i] == "J"):
-                new_plaintext = new_plaintext + "i"
+                new_plaintext = new_plaintext + "I"
             else :
                 new_plaintext = new_plaintext + plaintext[i]
     else :
@@ -42,18 +38,29 @@ def plaintext_setting(plaintext) :
     for i in range (len(new_plaintext)) :
         if i+1 < len(new_plaintext) :
             if (new_plaintext[i] == new_plaintext[i+1]):
-                final_plaintext = final_plaintext + new_plaintext[i] + "x"
+                final_plaintext = final_plaintext + new_plaintext[i] + "X"
             else :
                 final_plaintext = final_plaintext + new_plaintext[i]
         else :
             final_plaintext = final_plaintext + new_plaintext[i]
 
     if len(final_plaintext) % 2 == 1 :
-        final_plaintext = final_plaintext + "x"
+        final_plaintext = final_plaintext + "X"
 
     return final_plaintext
 
-def playfair_enkripsi(key, plaintext):
+def ciphertext_setting(ciphertext):
+    ciphertext= ciphertext.upper()
+    final_ciphertext = ""
+    new_ciphertext = ciphertext.replace(" ","")
+
+    for i in range (len(new_ciphertext)) :
+        if new_ciphertext[i] != "X" :
+            final_ciphertext = final_ciphertext + new_ciphertext[i]
+
+    return final_ciphertext
+
+def EnkripsiPlayfair(plaintext, key):
     ciphertext = ""
     i = 0
     
@@ -81,11 +88,16 @@ def playfair_enkripsi(key, plaintext):
             ciphertext = ciphertext + key[row1][col2] + key[row2][col1]
         
         i = i+2
-  
+        
+    if plaintext.isupper() :
+        ciphertext = ciphertext.upper()
+    else :
+        ciphertext = ciphertext.lower()
+
     return ciphertext
 
-def playfair_dekripsi(key, ciphertext): 
-    decyrpt_result = ""
+def DekripsiPlayfair(ciphertext, key): 
+    plaintext = ""
     i = 0
     
     while i <= (len(ciphertext)-2) :
@@ -105,31 +117,17 @@ def playfair_dekripsi(key, ciphertext):
                     col2 = k
 
         if row1 == row2 :
-            decyrpt_result += key[row1][(col1 - 1)%5] + key[row1][(col2 - 1)%5]
+            plaintext += key[row1][(col1 - 1)%5] + key[row1][(col2 - 1)%5]
         elif col1 == col2 :
-            decyrpt_result += key[(row1 - 1)%5][col1] + key[(row2 - 1)%5][col2]
+            plaintext += key[(row1 - 1)%5][col1] + key[(row2 - 1)%5][col2]
         else :
-            decyrpt_result += key[row1][col2] + key[row2][col1]
+            plaintext += key[row1][col2] + key[row2][col1]
         
         i = i+2
-  
-    return decyrpt_result
 
-def menu_playchiper():
-    plaintext = str(input("Masukkan plaintext : "))
-    key = str(input("Masukkan key : "))
+    if ciphertext.isupper() :
+        plaintext = plaintext.upper()
+    else :
+        plaintext = plaintext.lower()
 
-    new_key = key_setting(key)
-    new_plaintext = plaintext_setting(plaintext)
-
-    new_key_matrix = newkey_matrix(new_key)
-    print(new_key_matrix)
-    print(new_plaintext)
-
-    play = playfair_enkripsi(new_key_matrix, new_plaintext)
-    print(play)
-
-    dec = playfair_dekripsi(new_key_matrix, play)
-    print(dec)
-
-menu_playchiper()
+    return plaintext
