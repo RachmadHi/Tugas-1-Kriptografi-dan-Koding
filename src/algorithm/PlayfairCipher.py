@@ -121,7 +121,7 @@ def DekripsiPlayfair(ciphertext, key):
         elif col1 == col2 :
             plaintext += key[(row1 - 1)%5][col1] + key[(row2 - 1)%5][col2]
         else :
-            plaintext += key[row1][col2] + key[row2][col1]
+            plaintext += key[row2][col1] + key[row1][col2]
         
         i = i+2
 
