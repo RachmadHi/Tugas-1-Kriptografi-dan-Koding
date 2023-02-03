@@ -44,6 +44,7 @@ class Ui_Vigenere(object):
         ciphertext= self.TextInput.text()
         key = self.KeyInput.text()
         plaintext = DekripsiVigenere(ciphertext, key)
+        self.text_format(plaintext)
         self.SaveFile.clicked.connect(self.saveFile)
        
     def dekripsiFile():
@@ -64,6 +65,21 @@ class Ui_Vigenere(object):
         MainWindow.setStyleSheet("background: #E2CD93;")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+
+        self.UploadFile = QtWidgets.QPushButton(self.centralwidget)
+        self.UploadFile.setGeometry(QtCore.QRect(700, 160, 191, 41))
+        self.UploadFile.setStyleSheet("background: #D19B47;\n"
+        "border-radius: 15px;\n"
+        "\n"
+        "font-style: normal;\n"
+        "font-weight: 700;\n"
+        "font-size: 14px;\n"
+        "line-height: 49px;\n"
+        "text-align: center;\n"
+        "letter-spacing: 0.2em;\n"
+        "color: #FFFFFF;")
+        self.UploadFile.setObjectName("UploadFile")
+        self.UploadFile.clicked.connect(self.fileDialog)
 
         self.DecryptPushButton = QtWidgets.QPushButton(self.centralwidget)
         self.DecryptPushButton.setGeometry(QtCore.QRect(310, 380, 191, 41))
@@ -301,6 +317,7 @@ class Ui_Vigenere(object):
         self.NoSpacingRadioButton.setText(_translate("MainWindow", "No Spacing"))
         self.GroupBy5radioButton.setText(_translate("MainWindow", "Group by 5"))
         self.SaveFile.setText(_translate("MainWindow", "Save File"))
+        self.UploadFile.setText(_translate("MainWindow", "Upload File"))
         self.Back.setText(_translate("MainWindow", "Back to Main Menu"))
         self.textBrowser_2.setText(_translate("MainWindow", ""))
 

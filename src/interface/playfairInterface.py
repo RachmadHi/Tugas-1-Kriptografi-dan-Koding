@@ -72,6 +72,20 @@ class Ui_Playfair(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
 
+        self.UploadFile = QtWidgets.QPushButton(self.centralwidget)
+        self.UploadFile.setGeometry(QtCore.QRect(700, 160, 191, 41))
+        self.UploadFile.setStyleSheet("background: #D19B47;\n"
+        "border-radius: 15px;\n"
+        "\n"
+        "font-style: normal;\n"
+        "font-weight: 700;\n"
+        "font-size: 14px;\n"
+        "line-height: 49px;\n"
+        "text-align: center;\n"
+        "letter-spacing: 0.2em;\n"
+        "color: #FFFFFF;")
+        self.UploadFile.setObjectName("UploadFile")
+
         self.DecryptPushButton = QtWidgets.QPushButton(self.centralwidget)
         self.DecryptPushButton.setGeometry(QtCore.QRect(310, 380, 191, 41))
         font = QtGui.QFont()
@@ -292,6 +306,7 @@ class Ui_Playfair(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.UploadFile.setText(_translate("MainWindow", "Upload File"))
         self.DecryptPushButton.setText(_translate("MainWindow", "Decrypt"))
         self.Judul.setText(_translate("MainWindow", "Playfair Cipher"))
         self.EncryptPushButton.setText(_translate("MainWindow", "Encrypt"))
