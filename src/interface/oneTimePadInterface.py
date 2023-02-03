@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'vigenere.ui'
+# Form implementation generated from reading ui file 'onetimepad.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -11,65 +11,77 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
+class Ui_OneTimePad(object):
+    def openHomepage(self):
+        from interface.hompageInterface import Ui_Homepage
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_Homepage()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        MainWindow.setObjectName("Classical Cryptography")
         MainWindow.resize(1000, 650)
         MainWindow.setStyleSheet("background: #E2CD93;")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+
         self.DecryptPushButton = QtWidgets.QPushButton(self.centralwidget)
         self.DecryptPushButton.setGeometry(QtCore.QRect(310, 380, 191, 41))
         font = QtGui.QFont()
-        font.setPointSize(-1)
+        font.setPointSize(1)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(87)
         self.DecryptPushButton.setFont(font)
         self.DecryptPushButton.setStyleSheet("background: #D19B47;\n"
-"border-radius: 15px;\n"
-"\n"
-"font-style: normal;\n"
-"font-weight: 700;\n"
-"font-size: 14px;\n"
-"line-height: 49px;\n"
-"text-align: center;\n"
-"\n"
-"color: #FFFFFF;")
+        "border-radius: 15px;\n"
+        "\n"
+        "font-style: normal;\n"
+        "font-weight: 700;\n"
+        "font-size: 14px;\n"
+        "line-height: 49px;\n"
+        "text-align: center;\n"
+        "\n"
+        "color: #FFFFFF;")
         self.DecryptPushButton.setObjectName("DecryptPushButton")
+
         self.Judul = QtWidgets.QLabel(self.centralwidget)
-        self.Judul.setGeometry(QtCore.QRect(260, 30, 451, 71))
+        self.Judul.setGeometry(QtCore.QRect(250, 20, 511, 71))
         font = QtGui.QFont()
         font.setFamily("Copperplate Gothic Bold")
         font.setPointSize(36)
         self.Judul.setFont(font)
         self.Judul.setStyleSheet("text-align : center;\n"
-"color: #B67F57;")
+        "color: #B67F57;")
         self.Judul.setObjectName("Judul")
+
         self.encryptPushButton = QtWidgets.QPushButton(self.centralwidget)
         self.encryptPushButton.setGeometry(QtCore.QRect(100, 380, 191, 41))
         font = QtGui.QFont()
-        font.setPointSize(-1)
+        font.setPointSize(1)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(87)
         self.encryptPushButton.setFont(font)
         self.encryptPushButton.setStyleSheet("background: #D19B47;\n"
-"border-radius: 15px;\n"
-"\n"
-"font-style: normal;\n"
-"font-weight: 700;\n"
-"font-size: 14px;\n"
-"line-height: 49px;\n"
-"text-align: center;\n"
-"letter-spacing: 0.2em;\n"
-"color: #FFFFFF;")
+        "border-radius: 15px;\n"
+        "\n"
+        "font-style: normal;\n"
+        "font-weight: 700;\n"
+        "font-size: 14px;\n"
+        "line-height: 49px;\n"
+        "text-align: center;\n"
+        "letter-spacing: 0.2em;\n"
+        "color: #FFFFFF;")
         self.encryptPushButton.setObjectName("encryptPushButton")
+
         self.TextInput = QtWidgets.QTextEdit(self.centralwidget)
         self.TextInput.setGeometry(QtCore.QRect(100, 160, 561, 41))
         self.TextInput.setStyleSheet("background-color : white;\n"
 "border-radius : 15px;")
         self.TextInput.setObjectName("TextInput")
+
         self.textInput_label = QtWidgets.QLabel(self.centralwidget)
         self.textInput_label.setGeometry(QtCore.QRect(100, 100, 111, 71))
         font = QtGui.QFont()
@@ -79,8 +91,9 @@ class Ui_MainWindow(object):
         self.textInput_label.setStyleSheet("text-align : center;\n"
 "color: #B67F57;")
         self.textInput_label.setObjectName("textInput_label")
+
         self.keyLabel = QtWidgets.QLabel(self.centralwidget)
-        self.keyLabel.setGeometry(QtCore.QRect(100, 190, 41, 71))
+        self.keyLabel.setGeometry(QtCore.QRect(100, 190, 211, 71))
         font = QtGui.QFont()
         font.setFamily("Copperplate Gothic Bold")
         font.setPointSize(14)
@@ -88,11 +101,13 @@ class Ui_MainWindow(object):
         self.keyLabel.setStyleSheet("text-align : center;\n"
 "color: #B67F57;")
         self.keyLabel.setObjectName("keyLabel")
+
         self.KeyInput = QtWidgets.QTextEdit(self.centralwidget)
         self.KeyInput.setGeometry(QtCore.QRect(100, 250, 791, 41))
         self.KeyInput.setStyleSheet("background-color : white;\n"
 "border-radius : 15px;")
         self.KeyInput.setObjectName("KeyInput")
+
         self.ResultLabel = QtWidgets.QLabel(self.centralwidget)
         self.ResultLabel.setGeometry(QtCore.QRect(100, 420, 451, 71))
         font = QtGui.QFont()
@@ -102,6 +117,7 @@ class Ui_MainWindow(object):
         self.ResultLabel.setStyleSheet("text-align : center;\n"
 "color: #B67F57;")
         self.ResultLabel.setObjectName("ResultLabel")
+
         self.textInput_label_4 = QtWidgets.QLabel(self.centralwidget)
         self.textInput_label_4.setGeometry(QtCore.QRect(700, 90, 111, 71))
         font = QtGui.QFont()
@@ -111,6 +127,7 @@ class Ui_MainWindow(object):
         self.textInput_label_4.setStyleSheet("text-align : center;\n"
 "color: #B67F57;")
         self.textInput_label_4.setObjectName("textInput_label_4")
+
         self.SpacingLabel = QtWidgets.QLabel(self.centralwidget)
         self.SpacingLabel.setGeometry(QtCore.QRect(100, 280, 91, 71))
         font = QtGui.QFont()
@@ -120,80 +137,87 @@ class Ui_MainWindow(object):
         self.SpacingLabel.setStyleSheet("text-align : center;\n"
 "color: #B67F57;")
         self.SpacingLabel.setObjectName("SpacingLabel")
+
         self.NoSpacingRadioButton = QtWidgets.QRadioButton(self.centralwidget)
         self.NoSpacingRadioButton.setGeometry(QtCore.QRect(100, 340, 121, 17))
         font = QtGui.QFont()
-        font.setPointSize(-1)
+        font.setPointSize(1)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(87)
         self.NoSpacingRadioButton.setFont(font)
         self.NoSpacingRadioButton.setStyleSheet("font-style: normal;\n"
-"font-weight: 700;\n"
-"font-size: 14px;\n"
-"line-height: 32px;\n"
-"\n"
-"color: #B67F57;\n"
-"")
+        "font-weight: 700;\n"
+        "font-size: 14px;\n"
+        "line-height: 32px;\n"
+        "\n"
+        "color: #B67F57;\n"
+        "")
         self.NoSpacingRadioButton.setObjectName("NoSpacingRadioButton")
+
         self.GroupBy5radioButton = QtWidgets.QRadioButton(self.centralwidget)
         self.GroupBy5radioButton.setGeometry(QtCore.QRect(260, 340, 121, 17))
         font = QtGui.QFont()
-        font.setPointSize(-1)
+        font.setPointSize(1)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(87)
         self.GroupBy5radioButton.setFont(font)
         self.GroupBy5radioButton.setStyleSheet("font-style: normal;\n"
-"font-weight: 700;\n"
-"font-size: 14px;\n"
-"line-height: 32px;\n"
-"\n"
-"color: #B67F57;\n"
-"")
+        "font-weight: 700;\n"
+        "font-size: 14px;\n"
+        "line-height: 32px;\n"
+        "\n"
+        "color: #B67F57;\n"
+        "")
         self.GroupBy5radioButton.setObjectName("GroupBy5radioButton")
-        self.encryptPushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.encryptPushButton_2.setGeometry(QtCore.QRect(100, 570, 191, 41))
+
+        self.SaveFile = QtWidgets.QPushButton(self.centralwidget)
+        self.SaveFile.setGeometry(QtCore.QRect(100, 570, 191, 41))
         font = QtGui.QFont()
-        font.setPointSize(-1)
+        font.setPointSize(1)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(87)
-        self.encryptPushButton_2.setFont(font)
-        self.encryptPushButton_2.setStyleSheet("background: #D19B47;\n"
-"border-radius: 15px;\n"
-"\n"
-"font-style: normal;\n"
-"font-weight: 700;\n"
-"font-size: 14px;\n"
-"line-height: 49px;\n"
-"text-align: center;\n"
-"letter-spacing: 0.2em;\n"
-"color: #FFFFFF;")
-        self.encryptPushButton_2.setObjectName("encryptPushButton_2")
-        self.DecryptPushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.DecryptPushButton_2.setGeometry(QtCore.QRect(700, 580, 191, 41))
+        self.SaveFile.setFont(font)
+        self.SaveFile.setStyleSheet("background: #D19B47;\n"
+        "border-radius: 15px;\n"
+        "\n"
+        "font-style: normal;\n"
+        "font-weight: 700;\n"
+        "font-size: 14px;\n"
+        "line-height: 49px;\n"
+        "text-align: center;\n"
+        "letter-spacing: 0.2em;\n"
+        "color: #FFFFFF;")
+        self.SaveFile.setObjectName("SaveFile")
+
+        self.Back = QtWidgets.QPushButton(self.centralwidget)
+        self.Back.setGeometry(QtCore.QRect(700, 580, 191, 41))
         font = QtGui.QFont()
-        font.setPointSize(-1)
+        font.setPointSize(1)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(87)
-        self.DecryptPushButton_2.setFont(font)
-        self.DecryptPushButton_2.setStyleSheet("background: #E24848;\n"
-"border-radius: 15px;\n"
-"\n"
-"font-style: normal;\n"
-"font-weight: 700;\n"
-"font-size: 14px;\n"
-"line-height: 49px;\n"
-"text-align: center;\n"
-"\n"
-"color: #FFFFFF;")
-        self.DecryptPushButton_2.setObjectName("DecryptPushButton_2")
+        self.Back.setFont(font)
+        self.Back.setStyleSheet("background: #E24848;\n"
+        "border-radius: 15px;\n"
+        "\n"
+        "font-style: normal;\n"
+        "font-weight: 700;\n"
+        "font-size: 14px;\n"
+        "line-height: 49px;\n"
+        "text-align: center;\n"
+        "\n"
+        "color: #FFFFFF;")
+        self.Back.setObjectName("Back")
+        self.Back.clicked.connect(self.openHomepage)
+        self.Back.clicked.connect(MainWindow.close)
+
         self.textBrowser_2 = QtWidgets.QTextBrowser(self.centralwidget)
         self.textBrowser_2.setGeometry(QtCore.QRect(100, 480, 791, 71))
         self.textBrowser_2.setStyleSheet("background : white;\n"
-"border-radius : 15px;")
+        "border-radius : 15px;")
         self.textBrowser_2.setObjectName("textBrowser_2")
         self.SpacingLabel.raise_()
         self.ResultLabel.raise_()
@@ -207,8 +231,8 @@ class Ui_MainWindow(object):
         self.textInput_label_4.raise_()
         self.NoSpacingRadioButton.raise_()
         self.GroupBy5radioButton.raise_()
-        self.encryptPushButton_2.raise_()
-        self.DecryptPushButton_2.raise_()
+        self.SaveFile.raise_()
+        self.Back.raise_()
         self.textBrowser_2.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -222,29 +246,43 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.DecryptPushButton.setText(_translate("MainWindow", "Decrypt"))
-        self.Judul.setText(_translate("MainWindow", "Vigenere Cipher"))
+        self.Judul.setText(_translate("MainWindow", "One Time Pad (OTP)"))
         self.encryptPushButton.setText(_translate("MainWindow", "Encrypt"))
         self.TextInput.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt;\"><br /></p></body></html>"))
         self.textInput_label.setText(_translate("MainWindow", "Text input"))
-        self.keyLabel.setText(_translate("MainWindow", "Key"))
+        self.keyLabel.setText(_translate("MainWindow", "Key (Decrypt only)"))
         self.KeyInput.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt;\"><br /></p></body></html>"))
         self.ResultLabel.setText(_translate("MainWindow", "Result"))
         self.textInput_label_4.setText(_translate("MainWindow", "Input File"))
         self.SpacingLabel.setText(_translate("MainWindow", "Spacing"))
         self.NoSpacingRadioButton.setText(_translate("MainWindow", "No Spacing"))
         self.GroupBy5radioButton.setText(_translate("MainWindow", "Group by 5"))
-        self.encryptPushButton_2.setText(_translate("MainWindow", "Save File"))
-        self.DecryptPushButton_2.setText(_translate("MainWindow", "Back to Main Menu"))
+        self.SaveFile.setText(_translate("MainWindow", "Save File"))
+        self.Back.setText(_translate("MainWindow", "Back to Main Menu"))
         self.textBrowser_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_OneTimePad()
+    ui.setupUi(MainWindow)
+    MainWindow.setWindowTitle("Classical Cryptography")
+    MainWindow.show()
+
+    MainWindow.setFixedHeight(650)
+    MainWindow.setFixedWidth(1000)
+
+    sys.exit(app.exec_())
