@@ -35,24 +35,51 @@ def menu():
     print("Pilihan menu :")
     print("1. Enkripsi")
     print("2. Dekripsi")
+    print("3. Enkripsi File")
+    print("4 . Dekrispi File")
     operator = int(input("Masukkan Nomor: "))
     if operator == 1:
         plaintext = input("input plaintext: ")
         operation='encrypt'
         counter = wordCounter(plaintext)
         otpkey= read_otpkey(counter)
-        print(otpkey)
         encrypt = vigenere_cipher(plaintext,otpkey,operation)
         print("Cipher Text adalah: " + encrypt)
         print("Berikut adalah One Time Key Anda, gunakan ini untuk melakukan dekripsi: "+ otpkey )
-    else:
+    elif operator == 2:
         ciphertext = input("Masukkan ciphertext: ")
         otpkey = input("Masukkan OTP Key: ")
         operation = 'decrypt'
         decrypt = vigenere_cipher(ciphertext,otpkey,operation)
         print("Hasil dekripsi adalah: " + decrypt)
+    elif operator == 3:
+        encrypt_file('text.txt')
+    elif operator == 4:
+        decrypt_file('text.txt')
+
+
         
-    
+def encrypt_file(file_path):
+    with open(file_path, "r") as file:
+        plaintext = file.read()
+        counter = wordCounter(plaintext)
+    otpkey = read_otpkey(counter)
+    print('Berikut adalah OTP Key yang digunakan: ' + otpkey )
+    ciphertext = vigenere_cipher(plaintext, otpkey,'encrypt')
+    with open(file_path, "w") as file:
+        file.write(ciphertext)
+
+def decrypt_file(file_path):
+    """Decrypts the contents of the file at file_path using the one-time pad cipher"""
+    key = input('Masukkan Key: ')
+    with open(file_path, "r") as file:
+        ciphertext = file.read()
+    plaintext = vigenere_cipher(ciphertext, key,'decrypt')
+    with open(file_path, "w") as file:
+        file.write(plaintext)
+
+
+
 def read_otpkey(counter):
     otpkey=''
     with open('otpkey.txt') as f:
@@ -73,6 +100,16 @@ def deleteUsedKey(counter):
 
     with open("otpkey.txt", "w") as file:
         file.write(content)
+
+def read_from_file(randomfile):
+    with open(randomfile, 'rb') as file:
+        content = file.read()
+        return content
+
+def write_binary(randomfile,content):
+    with open(randomfile, 'wb') as file:
+        file.write(content)
+
 
 
 menu()
