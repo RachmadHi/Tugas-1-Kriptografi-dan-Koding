@@ -9,6 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import *
 from algorithm.VignereCipher import EnkripsiVigenere, DekripsiVigenere
 from util import saveFile
 
@@ -58,6 +59,9 @@ class Ui_Vigenere(object):
         self.ui = Ui_Homepage()
         self.ui.setupUi(self.window)
         self.window.show()
+
+    def fileDialog(self):
+        fname = QFileDialog.getOpenFileName(self, "Open File", "/src",)
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("Classical Cryptography")
