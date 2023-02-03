@@ -12,14 +12,25 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from algorithm.OTPCipher import *
 
 class Ui_OneTimePad(object):
-    
+    def text_format(self, text):
+        if self.NoSpacingRadioButton.isChecked() == True :
+            self.textBrowser_2.setText(text)
+        elif self.GroupBy5radioButton.isChecked() == True :
+            final_text = ""
+            n = 5
+            new_text = [text[i:i+n] for i in range(0, len(text), n)]
+            for i in range (len(new_text)) :
+                final_text += new_text[i] + " "
+            
+            self.textBrowser_2.setText(final_text)
+
     def enkripsiText(self): 
         plaintext = self.TextInput.text()
 
         ciphertext = EnkripsiOTP(plaintext)
         otpkey = OTPkey(plaintext)
         self.KeyInput.setText(otpkey)
-        self.textBrowser_2.setText(ciphertext)
+        self.text_format(ciphertext)
     
     def enkripsiFile() :
 
@@ -29,7 +40,7 @@ class Ui_OneTimePad(object):
         ciphertext= self.TextInput.text()
         OTPkey = self.KeyInput.text()
         plaintext = DekripsiOTP(ciphertext, OTPkey)
-        self.textBrowser_2.setText(plaintext)
+        self.text_format(plaintext)
 
     def dekripsiFile():
 

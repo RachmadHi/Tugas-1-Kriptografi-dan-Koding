@@ -13,7 +13,18 @@ from algorithm.PlayfairCipher import *
 
 
 class Ui_Playfair(object):
-    
+    def text_format(self, text):
+        if self.NoSpacingRadioButton.isChecked() == True :
+            self.textBrowser_2.setText(text)
+        elif self.GroupBy5radioButton.isChecked() == True :
+            final_text = ""
+            n = 5
+            new_text = [text[i:i+n] for i in range(0, len(text), n)]
+            for i in range (len(new_text)) :
+                final_text += new_text[i] + " "
+            
+            self.textBrowser_2.setText(final_text)
+
     def enkripsiText(self): 
         plaintext = self.TextInput.text()
         key = self.KeyInput.text()
@@ -21,7 +32,7 @@ class Ui_Playfair(object):
         new_plaintext = plaintext_setting(plaintext)
 
         ciphertext = EnkripsiPlayfair(new_plaintext, new_key)
-        self.textBrowser_2.setText(ciphertext)
+        self.text_format(ciphertext)
     
     def enkripsiFile() :
 
@@ -34,7 +45,7 @@ class Ui_Playfair(object):
 
         plaintext = DekripsiPlayfair(ciphertext, new_key)
         new_plaintext = ciphertext_setting(plaintext)
-        self.textBrowser_2.setText(new_plaintext)
+        self.text_format(new_plaintext)
 
     def dekripsiFile():
 

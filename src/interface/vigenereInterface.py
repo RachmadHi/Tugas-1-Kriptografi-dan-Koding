@@ -13,15 +13,24 @@ from algorithm.VignereCipher import EnkripsiVigenere, DekripsiVigenere
 from util import saveFile
 
 class Ui_Vigenere(object):
-    
-
+    def text_format(self, text):
+        if self.NoSpacingRadioButton.isChecked() == True :
+            self.textBrowser_2.setText(text)
+        elif self.GroupBy5radioButton.isChecked() == True :
+            final_text = ""
+            n = 5
+            new_text = [text[i:i+n] for i in range(0, len(text), n)]
+            for i in range (len(new_text)) :
+                final_text += new_text[i] + " "
+            
+            self.textBrowser_2.setText(final_text)
+   
     def enkripsiText(self): 
         plaintext = self.TextInput.text()
         key = self.KeyInput.text()
         ciphertext = EnkripsiVigenere(plaintext, key)
-        self.textBrowser_2.setText(ciphertext)
-        #self.SaveFile.clicked.connect(saveFile("Vigenere", ciphertext))
-    
+        self.text_format(ciphertext)
+
     def enkripsiFile() :
 
         return None
@@ -30,15 +39,13 @@ class Ui_Vigenere(object):
         ciphertext= self.TextInput.text()
         key = self.KeyInput.text()
         plaintext = DekripsiVigenere(ciphertext, key)
-        self.textBrowser_2.setText(plaintext)
-        self.SaveFile.clicked.connect(saveFile("Vigenere", plaintext))
-
+        self.text_format(plaintext)
+       
     def dekripsiFile():
 
         return None
-    
-    
 
+ 
     def openHomepage(self):
         from interface.hompageInterface import Ui_Homepage
         self.window = QtWidgets.QMainWindow()
@@ -184,7 +191,6 @@ class Ui_Vigenere(object):
         "color: #B67F57;\n"
         "")
         self.NoSpacingRadioButton.setObjectName("NoSpacingRadioButton")
-        self.NoSpacingRadioButton.toggled.connect(lambda:self.btnstate(self.NoSpacingRadioButton))
 
         self.GroupBy5radioButton = QtWidgets.QRadioButton(self.centralwidget)
         self.GroupBy5radioButton.setGeometry(QtCore.QRect(260, 340, 121, 17))
@@ -202,7 +208,7 @@ class Ui_Vigenere(object):
         "color: #B67F57;\n"
         "")
         self.GroupBy5radioButton.setObjectName("GroupBy5radioButton")
-        self.GroupBy5radioButton.toggled.connect(lambda:self.btnstate(self.GroupBy5radioButton))
+
 
         self.SaveFile = QtWidgets.QPushButton(self.centralwidget)
         self.SaveFile.setGeometry(QtCore.QRect(100, 570, 191, 41))
