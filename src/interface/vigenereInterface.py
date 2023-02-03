@@ -13,6 +13,10 @@ from algorithm.VignereCipher import EnkripsiVigenere, DekripsiVigenere
 from util import saveFile
 
 class Ui_Vigenere(object):
+    def saveFile(self) :
+        text = self.textBrowser_2.toPlainText()
+        saveFile("Vigenere", text)
+
     def text_format(self, text):
         if self.NoSpacingRadioButton.isChecked() == True :
             self.textBrowser_2.setText(text)
@@ -30,6 +34,7 @@ class Ui_Vigenere(object):
         key = self.KeyInput.text()
         ciphertext = EnkripsiVigenere(plaintext, key)
         self.text_format(ciphertext)
+        self.SaveFile.clicked.connect(self.saveFile)
 
     def enkripsiFile() :
 
@@ -39,7 +44,7 @@ class Ui_Vigenere(object):
         ciphertext= self.TextInput.text()
         key = self.KeyInput.text()
         plaintext = DekripsiVigenere(ciphertext, key)
-        self.text_format(plaintext)
+        self.SaveFile.clicked.connect(self.saveFile)
        
     def dekripsiFile():
 

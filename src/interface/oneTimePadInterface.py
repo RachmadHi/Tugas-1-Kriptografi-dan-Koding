@@ -10,8 +10,13 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from algorithm.OTPCipher import *
+from util import saveFile
 
 class Ui_OneTimePad(object):
+    def saveFile(self) :
+        text = self.textBrowser_2.toPlainText()
+        saveFile("Vigenere", text)
+
     def text_format(self, text):
         if self.NoSpacingRadioButton.isChecked() == True :
             self.textBrowser_2.setText(text)
@@ -31,6 +36,7 @@ class Ui_OneTimePad(object):
         otpkey = OTPkey(plaintext)
         self.KeyInput.setText(otpkey)
         self.text_format(ciphertext)
+        self.SaveFile.clicked.connect(self.saveFile)
     
     def enkripsiFile() :
 
@@ -41,6 +47,7 @@ class Ui_OneTimePad(object):
         OTPkey = self.KeyInput.text()
         plaintext = DekripsiOTP(ciphertext, OTPkey)
         self.text_format(plaintext)
+        self.SaveFile.clicked.connect(self.saveFile)
 
     def dekripsiFile():
 

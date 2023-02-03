@@ -10,9 +10,14 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from algorithm.PlayfairCipher import *
-
+from util import saveFile
 
 class Ui_Playfair(object):
+
+    def saveFile(self) :
+        text = self.textBrowser_2.toPlainText()
+        saveFile("Vigenere", text)
+
     def text_format(self, text):
         if self.NoSpacingRadioButton.isChecked() == True :
             self.textBrowser_2.setText(text)
@@ -33,6 +38,7 @@ class Ui_Playfair(object):
 
         ciphertext = EnkripsiPlayfair(new_plaintext, new_key)
         self.text_format(ciphertext)
+        self.SaveFile.clicked.connect(self.saveFile)
     
     def enkripsiFile() :
 
@@ -46,6 +52,7 @@ class Ui_Playfair(object):
         plaintext = DekripsiPlayfair(ciphertext, new_key)
         new_plaintext = ciphertext_setting(plaintext)
         self.text_format(new_plaintext)
+        self.SaveFile.clicked.connect(self.saveFile)
 
     def dekripsiFile():
 

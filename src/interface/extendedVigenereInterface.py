@@ -10,8 +10,12 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from algorithm.ExtendedVigenereCipher import *
+from util import saveFile
 
 class Ui_ExtendedVigenere(object):
+    def saveFile(self) :
+        text = self.textBrowser_2.toPlainText()
+        saveFile("Vigenere", text)
 
     def text_format(self, text):
         if self.NoSpacingRadioButton.isChecked() == True :
@@ -30,6 +34,7 @@ class Ui_ExtendedVigenere(object):
         key = self.KeyInput.text()
         ciphertext = EnkripsiExtendedVigenere(plaintext, key)
         self.text_format(ciphertext)
+        self.SaveFile.clicked.connect(self.saveFile)
     
     def enkripsiFile() :
 
@@ -41,6 +46,7 @@ class Ui_ExtendedVigenere(object):
 
         plaintext = DekripsiExtendedVigenere(ciphertext, key)
         self.text_format(plaintext)
+        self.SaveFile.clicked.connect(self.saveFile)
 
     def dekripsiFile():
 
