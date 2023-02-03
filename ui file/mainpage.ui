@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>650</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background: #E2CD93;</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="VigenerePushButton">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>210</y>
+      <width>301</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>-1</pointsize>
+      <weight>87</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: #D19B47;
+border-radius: 30px;
+
+font-style: normal;
+font-weight: 700;
+font-size: 22px;
+line-height: 49px;
+text-align: center;
+
+color: #FFFFFF;</string>
+    </property>
+    <property name="text">
+     <string>Vigenere Cipher</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ExtendedVigenerePushButton">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>210</y>
+      <width>301</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>-1</pointsize>
+      <weight>87</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: #D19B47;
+border-radius: 30px;
+
+font-style: normal;
+font-weight: 700;
+font-size: 22px;
+line-height: 49px;
+text-align: center;
+
+color: #FFFFFF;</string>
+    </property>
+    <property name="text">
+     <string>Extended Vigenere</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="PlayfairPushButton">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>380</y>
+      <width>301</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>-1</pointsize>
+      <weight>87</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: #D19B47;
+border-radius: 30px;
+
+font-style: normal;
+font-weight: 700;
+font-size: 22px;
+line-height: 49px;
+text-align: center;
+
+color: #FFFFFF;</string>
+    </property>
+    <property name="text">
+     <string>Playfair Cipher</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="OTPPushButton">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>380</y>
+      <width>301</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>-1</pointsize>
+      <weight>87</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: #D19B47;
+border-radius: 30px;
+
+font-style: normal;
+font-weight: 700;
+font-size: 22px;
+line-height: 49px;
+text-align: center;
+
+color: #FFFFFF;</string>
+    </property>
+    <property name="text">
+     <string>One Time Pad (OTP)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Judul">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>60</y>
+      <width>681</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Copperplate Gothic Bold</family>
+      <pointsize>36</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #B67F57;</string>
+    </property>
+    <property name="text">
+     <string>Classical Cryptography</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="createdby">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>570</y>
+      <width>551</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Dubai</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #B67F57;</string>
+    </property>
+    <property name="text">
+     <string>Created by : 18220005 Muhammad Rifqi Riansyah M &amp; 18220049 Rachmad Hidayat</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
