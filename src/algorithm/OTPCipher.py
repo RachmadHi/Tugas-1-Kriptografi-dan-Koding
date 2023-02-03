@@ -27,37 +27,6 @@ def vigenere_cipher(text, key, operation):
             result += ALPHABET[(char_index - ALPHABET.find(key[key_index])) % 26]
         key_index += 1
     return result
-
-
-def menu():
-    print('\n')
-    print("--------  One Time Pad Cipher  ---------")
-    print("Pilihan menu :")
-    print("1. Enkripsi")
-    print("2. Dekripsi")
-    print("3. Enkripsi File")
-    print("4 . Dekrispi File")
-    operator = int(input("Masukkan Nomor: "))
-    if operator == 1:
-        plaintext = input("input plaintext: ")
-        operation='encrypt'
-        counter = wordCounter(plaintext)
-        otpkey= read_otpkey(counter)
-        encrypt = vigenere_cipher(plaintext,otpkey,operation)
-        print("Cipher Text adalah: " + encrypt)
-        print("Berikut adalah One Time Key Anda, gunakan ini untuk melakukan dekripsi: "+ otpkey )
-    elif operator == 2:
-        ciphertext = input("Masukkan ciphertext: ")
-        otpkey = input("Masukkan OTP Key: ")
-        operation = 'decrypt'
-        decrypt = vigenere_cipher(ciphertext,otpkey,operation)
-        print("Hasil dekripsi adalah: " + decrypt)
-    elif operator == 3:
-        encrypt_file('text.txt')
-    elif operator == 4:
-        decrypt_file('text.txt')
-
-
         
 def encrypt_file(file_path):
     with open(file_path, "r") as file:
@@ -77,8 +46,6 @@ def decrypt_file(file_path):
     plaintext = vigenere_cipher(ciphertext, key,'decrypt')
     with open(file_path, "w") as file:
         file.write(plaintext)
-
-
 
 def read_otpkey(counter):
     otpkey=''
