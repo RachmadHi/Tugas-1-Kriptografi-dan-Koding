@@ -6,3 +6,21 @@ def saveFile(algorithm, text) :
     file = open(f'savedfile\\{file_name}.txt', 'w')
     file.write(text)
     file.close()
+
+def read_from_file(randomfile):
+    with open(randomfile, 'rb') as file:
+        content = file.read()
+        return content
+
+def write_binary(randomfile,content):
+    with open(randomfile, 'wb') as file:
+        file.write(content)
+
+def read_from_file(randomfile):
+    with open(randomfile, 'rb') as file:
+        content = file.read()
+        return content
+
+def write_binary(randomfile,content):
+    with open(randomfile, 'wb') as file:
+        file.write(content)
