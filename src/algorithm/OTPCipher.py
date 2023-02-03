@@ -92,9 +92,6 @@ def decrypt_file(file_path):
     with open(file_path, "w") as file:
         file.write(plaintext)
 
-
-
->>>>>>> Stashed changes
 def read_otpkey(counter):
     otpkey=''
     with open('src\otpkey.txt') as f:
@@ -115,8 +112,6 @@ def deleteUsedKey(counter):
 
     with open("src\otpkey.txt", "w") as file:
         file.write(content)
-<<<<<<< HEAD
-=======
 
 def read_from_file(randomfile):
     with open(randomfile, 'rb') as file:
@@ -135,9 +130,3 @@ def read_from_file(randomfile):
 def write_binary(randomfile,content):
     with open(randomfile, 'wb') as file:
         file.write(content)
-
-
-
-
-menu()
->>>>>>> f1bb0a8a609236d1cdf0a535ae52f0f2c775aabd

@@ -10,7 +10,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from algorithm.VignereCipher import EnkripsiVigenere, DekripsiVigenere
-
+from util import saveFile
 
 class Ui_Vigenere(object):
     
@@ -20,6 +20,7 @@ class Ui_Vigenere(object):
         key = self.KeyInput.text()
         ciphertext = EnkripsiVigenere(plaintext, key)
         self.textBrowser_2.setText(ciphertext)
+        #self.SaveFile.clicked.connect(saveFile("Vigenere", ciphertext))
     
     def enkripsiFile() :
 
@@ -30,6 +31,7 @@ class Ui_Vigenere(object):
         key = self.KeyInput.text()
         plaintext = DekripsiVigenere(ciphertext, key)
         self.textBrowser_2.setText(plaintext)
+        self.SaveFile.clicked.connect(saveFile("Vigenere", plaintext))
 
     def dekripsiFile():
 

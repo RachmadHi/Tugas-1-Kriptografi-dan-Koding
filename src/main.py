@@ -3,7 +3,7 @@ import os
 import sys
 from PyQt5 import QtWidgets
 from interface.hompageInterface import Ui_Homepage
-
+i = 0
 
 ## Install package/library yang dibutuhkan
 print("Preparing Classical Cryptography...")
@@ -28,9 +28,4 @@ if __name__ == "__main__":
 
     sys.exit(app.exec_())
 
-def openFile():
-    return None
-
-def saveFile() :
-    return None
 
